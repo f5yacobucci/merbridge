@@ -43,6 +43,10 @@ helm-istio:
 helm-kuma:
 	helm template --set-string "mode=kuma" -n "kuma-system" merbridge helm > deploy/all-in-one-kuma.yaml
 
+# generate merbridge on nginx-mesh deploy templates
+helm-nginx-mesh:
+	helm template --set-string "mode=nginx-mesh" -n "nginx-mesh" merbridge helm > deploy/all-in-nginxmesh.yaml
+
 # package helm release
 helm-package:
 	helm package helm

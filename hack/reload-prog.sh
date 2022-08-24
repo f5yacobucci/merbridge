@@ -88,8 +88,9 @@ if [ -z "$mode" ]; then
 fi
 
 case $mode in
-  istio ) mesh_number=1; namespace="istio-system";;
-  kuma )  mesh_number=3; namespace="kuma-system";;
+  istio )        mesh_number=1; namespace="istio-system";;
+  kuma )         mesh_number=3; namespace="kuma-system";;
+  nginx-mesh )   mesh_number=4; namespace="nginx-mesh";;
 esac
 
 if ! command -v kubectl &> /dev/null && command -v clang &> /dev/null && command -v bpftool &> /dev/null

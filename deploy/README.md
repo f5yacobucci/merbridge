@@ -52,6 +52,15 @@ helm install -n linkerd --set mode=linkerd merbridge helm
 helm install -n kuma-system --set mode=kuma merbridge helm
 ```
 
+### Install Merbridge on NGINX Service Mesh
+
++ set mode=nginx-mesh to switch to nginx mode
++ set namespace where merbridge is going to install by -n .
+
+``` bash
+helm install -n nginx-mesh --set mode=nginx-mesh merbridge helm
+```
+
 ### Uninstall
 
 + excute this command in the namespace where merbridge has been installed
@@ -76,6 +85,8 @@ make helm-istio
 make helm-linkerd
 # update kuma deploy yaml
 make helm-kuma
+# update nginx-mesh deploy yaml
+make helm-nginx-mesh
 # package helm charts
 make helm-package
 ```

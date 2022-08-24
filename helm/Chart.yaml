@@ -11,6 +11,7 @@ keywords:
 - istio
 - linkerd
 - kuma
+- nginx-mesh
 - ebpf
 sources:
   - https://github.com/merbridge/merbridge

@@ -19,6 +19,7 @@ limitations under the License.
 #define ISTIO 1
 #define LINKERD 2
 #define KUMA 3
+#define NGINX_SM 4
 
 #ifndef MESH
 #define MESH 1
@@ -92,6 +93,30 @@ static const __u32 envoy_ip6[4] = {0, 0, 0, 6 << 24};
 static const __u32 envoy_ip = 127 + (6 << 24);
 // ::6 (network order)
 static const __u32 envoy_ip6[4] = {0, 0, 0, 6 << 24};
+
+#elif MESH == NGINX_SM
+
+#ifndef OUT_REDIRECT_PORT
+#define OUT_REDIRECT_PORT 8889
+#endif
+
+#ifndef IN_REDIRECT_PORT
+#define IN_REDIRECT_PORT 8888
+#endif
+
+#ifndef SIDECAR_USER_ID
+#define SIDECAR_USER_ID 2102
+#endif
+
+#ifndef DNS_CAPTURE_PORT
+#define DNS_CAPTURE_PORT 0 // todo fix me
+#endif
+
+// 127.0.0.1 (network order)
+// change name from envoy?
+static const __u32 envoy_ip = 127 + (1 << 24);
+// ::1 (network order)
+static const __32 envoy_ip6[4] = {0, 0, 0, 1 << 24};
 
 #else
 #error "Mesh mode not supported yet"
